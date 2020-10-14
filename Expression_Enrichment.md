@@ -6,7 +6,7 @@
 
 query_H0 should be a data frame object with a single column, each row representing one gene:
 
-````R
+````
 #                     V1
 #1 Ha412HOChr16g00049975
 #2 Ha412HOChr16g00047516
@@ -20,7 +20,7 @@ query_H0 should be a data frame object with a single column, each row representi
 
 inv_library should be a data frame object with the first column containing gene names with the colname "Gene." All other columns should contain expression values for all genes in the genome (alternatively, if you want to query against a smaller library, include only genes you want to query against):
 
-````R
+````
 #                        Gene Bract Corolla Pollen Ligule Stamen Stem Style        Leaf       Root  Ovary
 #1 Ha412HOChr00c00007g00053165   199      27     30    309     27  326    75 113.0000000  60.500000 126.75
 #2 Ha412HOChr00c00008g00053166   153       2      5     84     22  532    15  47.7777778   1.333333  24.50
