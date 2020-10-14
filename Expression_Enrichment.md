@@ -6,27 +6,29 @@
 
 query_H0 should be a data frame object with a single column, each row representing one gene:
 
-                     V1
-1 Ha412HOChr16g00049975
-2 Ha412HOChr16g00047516
-3 Ha412HOChr16g00049976
-4 Ha412HOChr16g00047517
-5 Ha412HOChr16g00047518
-6 Ha412HOChr16g00047519
-
+````R
+#                     V1
+#1 Ha412HOChr16g00049975
+#2 Ha412HOChr16g00047516
+#3 Ha412HOChr16g00049976
+#4 Ha412HOChr16g00047517
+#5 Ha412HOChr16g00047518
+#6 Ha412HOChr16g00047519
+```
 
 #### 2: inv_library - the expression library you are querying against *in this case, average expression of all genes in 10 tissues*
 
 inv_library should be a data frame object with the first column containing gene names with the colname "Gene." All other columns should contain expression values for all genes in the genome (alternatively, if you want to query against a smaller library, include only genes you want to query against):
 
-                        Gene Bract Corolla Pollen Ligule Stamen Stem Style        Leaf       Root  Ovary
-1 Ha412HOChr00c00007g00053165   199      27     30    309     27  326    75 113.0000000  60.500000 126.75
-2 Ha412HOChr00c00008g00053166   153       2      5     84     22  532    15  47.7777778   1.333333  24.50
-3 Ha412HOChr00c00014g00053167   553      56     22    666     51  578   210 203.1111111 185.666667 274.00
-4 Ha412HOChr00c00020g00053168     0       0    595     14     61    0     4   0.3333333   0.000000 152.25
-5 Ha412HOChr00c00023g00053169   362     298    113   2163    594  349  1749  32.4444444  66.666667 657.75
-6 Ha412HOChr00c00094g00053170   266     101     10    422     96  530   194  67.6666667 159.166667 161.00
-
+````R
+#                        Gene Bract Corolla Pollen Ligule Stamen Stem Style        Leaf       Root  Ovary
+#1 Ha412HOChr00c00007g00053165   199      27     30    309     27  326    75 113.0000000  60.500000 126.75
+#2 Ha412HOChr00c00008g00053166   153       2      5     84     22  532    15  47.7777778   1.333333  24.50
+#3 Ha412HOChr00c00014g00053167   553      56     22    666     51  578   210 203.1111111 185.666667 274.00
+#4 Ha412HOChr00c00020g00053168     0       0    595     14     61    0     4   0.3333333   0.000000 152.25
+#5 Ha412HOChr00c00023g00053169   362     298    113   2163    594  349  1749  32.4444444  66.666667 657.75
+#6 Ha412HOChr00c00094g00053170   266     101     10    422     96  530   194  67.6666667 159.166667 161.00
+```
 
 #### 3: permutations - the number of times to permute the data *anywhere from 10,000 to 100,000 permutations is considered an acceptable balance between accuracy and computational time* 
 
@@ -34,7 +36,7 @@ inv_library should be a data frame object with the first column containing gene 
 
 The code follows:
 
-`
+````R
 query_permutes <- function(query_H0, inv_library, permutations){
   
   
@@ -106,7 +108,7 @@ query_permutes <- function(query_H0, inv_library, permutations){
   }
   
 }
-`
+```
 
 
 
