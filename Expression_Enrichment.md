@@ -1,4 +1,6 @@
-# This script is for running permutation tests for gene expression enrichment within a subset of genes against the genomic background.
+# Expression Library Enrichment
+
+## This script is for running permutation tests for gene expression enrichment within a subset of genes against the genomic background.
 
 
 ### The function below requires three parameters:
@@ -108,16 +110,4 @@ query_permutes <- function(query_H0, inv_library, permutations){
   }
   
 }
-```
-
-
-
-
-
-
-
-
-
-
-
-
+````
