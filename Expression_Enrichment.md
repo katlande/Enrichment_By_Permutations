@@ -14,7 +14,7 @@ query_H0 should be a data frame object with a single column, each row representi
 #4 Ha412HOChr16g00047517
 #5 Ha412HOChr16g00047518
 #6 Ha412HOChr16g00047519
-```
+````
 
 #### 2: inv_library - the expression library you are querying against *in this case, average expression of all genes in 10 tissues*
 
@@ -28,11 +28,11 @@ inv_library should be a data frame object with the first column containing gene 
 #4 Ha412HOChr00c00020g00053168     0       0    595     14     61    0     4   0.3333333   0.000000 152.25
 #5 Ha412HOChr00c00023g00053169   362     298    113   2163    594  349  1749  32.4444444  66.666667 657.75
 #6 Ha412HOChr00c00094g00053170   266     101     10    422     96  530   194  67.6666667 159.166667 161.00
-```
+````
 
 #### 3: permutations - the number of times to permute the data *anywhere from 10,000 to 100,000 permutations is considered an acceptable balance between accuracy and computational time* 
 
-`permuations <- 10000`
+````permuations <- 10000````
 
 The code follows:
 
