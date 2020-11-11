@@ -118,8 +118,13 @@ trawled_homologs$FDR <- p.adjust(trawled_homologs$p, method = "fdr")
 
 #Querying the background rate of gene clusters with the same TAIR homolog in non-inverted sections of the genome:
 
-#Ratio of enriched to non-enriched homologs:
-inv_Ratio <- ((nrow(Final_Output[Final_Output$FDR <= 0.01,]) - nrow(Final_Output[Final_Output$FDR > 0.01,])) / nrow(Final_Output))
+
+
+#Find the percentage of genes with multiple homologs in the genome that are enriched within haploblocks
+
+#Ratio of genes in enriched clusters to the total number of genes:
+(sum(Final_Output[Final_Output$FDR <= 0.01,]$Inverted)) /background_count #background_count = total duplicated TAIR homologs in all inversions, Final_Output = table of all clusters in all inversions
+#Ratio = 0.04318574 for Fisher's test with p.adj<=0.01
 
 
 #Create non-inverted regions to trawl:
@@ -164,13 +169,14 @@ while(permutations < 10000){
   output <- trawl_homologs(homologs2query, temp_genes, statistic="CHI")
   output$FDR <- p.adjust(output$ChiSq_p, method = "fdr")
   
-  #if there are enriched homologs in the query window:
-  if(nrow(output) > 1){
-    ratio <- ((nrow(output[output$FDR <= 0.01,]) - nrow(output[output$FDR > 0.01,])) / nrow(output))
+  #if there are genes in the window:
+  if(length(temp_genes) > 10){
     
-    #check if the frequency of clusters is higher in the random non-inverted query or the whole genome:
-    if(ratio > inv_Ratio){higher = higher + 1} else if(ratio < inv_Ratio){lower=lower+1} else { neutral = neutral + 1}
-  } else { neutral = neutral + 1}#if the values are equal
+    if(nrow(output) == 0){ratio <- 0} else {ratio <- (sum(output[output$FDR <= 0.01,]$Inverted)) /length(temp_genes)}
+    #inv ratio for Fisher at FDR<=0.01 = 0.04318574
+   
+    if(ratio > 0.04318574){higher = higher + 1} else if(ratio < 0.04104478){lower=lower+1} else { neutral = neutral + 1}
+  } else { neutral = neutral + 1}
   
   permutations = permutations + 1
 }
